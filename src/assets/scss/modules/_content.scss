@@ -1,0 +1,305 @@
+.content {
+    position: relative;
+    width: 70%;
+    padding: 2rem;
+
+    // Navbar
+
+    &__navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__back {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        text-decoration: none;
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
+        color: #424242;
+
+        &:after {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+
+            left: 15%;
+            width: 0%;
+            height: 1px;
+
+            background: #424242;
+            transform: translateY(-50%);
+            transition: all .1s linear;
+        }
+
+        &:hover:after {
+            width: 30%;
+        }
+
+        span {
+            transition: all .1s linear;
+        }
+
+        &:hover span {
+            transform: translateY(100%);
+        }
+    }
+
+    &__icon {
+        color: #424242;
+        width: 24px;
+    }
+
+    &__login {
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #424242;
+
+        a {
+            position: relative;
+            text-transform: uppercase;
+            color: #333;
+            font-weight: 700;
+            text-decoration: none;
+
+            &:after {
+                content: "";
+
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+
+                width: 0%;
+                height: 1px;
+                background: #424242;
+                transition: all .1s linear;
+            }
+
+            &:hover:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    // Membership
+
+    &__membership {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+        margin-top: 8rem;
+
+        svg {
+            width: 20px;
+        }
+    }
+
+    &__title {
+        margin-bottom: .8rem;
+
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 44px;
+        text-align: center;
+        color: #212121;
+        text-transform: uppercase;
+    }
+
+    &__subtitle {
+        margin-bottom: 2.5rem;
+
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 28px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #424242;
+    }
+
+    &__form {
+        width: 420px;
+        max-width: 95%;
+    }
+
+    &__input {
+        display: flex;
+        align-items: center;
+
+        margin-bottom: 1.1rem;
+        padding-left: 20px;
+
+        background: #fff;
+        border: 1px solid #757575;
+
+        input {
+            width: 90%;
+            height: 72px;
+            padding-right: 20px;
+
+            border: none;
+            outline: none;
+
+            font-family: var(--font);
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+            display: flex;
+            align-items: center;
+            color: #424242;
+        }
+
+        svg {
+            color: #9E9E9E;
+            margin-right: 0.9rem;
+            width: 25px;
+        }
+
+        &:nth-child(3) svg {fill: #9E9E9E;}
+    }
+
+    &__show {
+        width: 40px;
+        margin-right: 1rem;
+
+        border: none;
+        background: transparent;
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 23px;
+        text-align: right;
+        color: #797979;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 45px;
+
+        width: 100%;
+        height: 72px;
+
+        border: none;
+        color: #fff;
+        background: #24243E;
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        cursor: pointer;
+        transition: all .1s linear;
+
+        svg {
+            width: 25px;
+            max-height: 100%;
+            fill: #fff;
+            animation: 5s linear infinite animatedArrow;
+        }
+
+        &:hover {
+            background: darken(#24243E, 3%);
+        }
+
+        
+    }
+
+    @keyframes animatedArrow {
+        0% {
+          transform: translateX(0%);
+        }
+      
+        33% {
+          transform: translateX(30%);
+        }
+
+        66% {
+            transform: translateX(-30%);
+        }
+      
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    &__issue {
+        display: block;
+        margin-top: 2.7rem;
+
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
+        text-align: center;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    // Footer
+    &__footer {
+        position: absolute;
+        bottom: 2rem;
+        width: calc(100% - 4rem);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__copyright {
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: -0.5px;
+        color: #9E9E9E;
+    }
+
+    &__help {
+        display: flex;
+        align-items: center;
+
+        background: transparent;
+        border: 0;
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
+        color: #424242;
+        text-decoration: none;
+        cursor: pointer;
+
+        svg {
+            margin-right: .6rem;
+        }
+    }
+}

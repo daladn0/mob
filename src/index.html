@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkMobile - Test</title>
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        @@include('assets/parts/sidebar.html')
+        <div class="content">
+            <header class="content__navbar">
+                @@include('assets/parts/back.html')
+                <div class="content__login">
+                    <span class="content__signed">Already a Member?</span> <a href="/signin.html">log in now</a>
+                </div>
+            </header>
+            <div class="content__membership">
+                <h2 class="content__title">Become an exclusive member</h2>
+                <p class="content__subtitle">Sign up and join the partnership</p>
+                <form class="content__form">
+                    <div class="content__input">
+                        <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" placeholder="Your name">
+                    </div>
+                    @@include('assets/parts/inputs.html')
+                    @@include('assets/parts/button.html')
+                </form>
+            </div>
+            @@include('assets/parts/footer.html')
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

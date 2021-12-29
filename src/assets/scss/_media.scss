@@ -1,0 +1,222 @@
+@media screen and ( max-width: 1200px ) {
+    .container {
+        height: unset;
+        min-height: 500px;
+    }
+
+    // sidebar
+    .sidebar {
+        width: 40%;
+        height: 100vh;
+
+        &__logo {
+            img {
+                width: 100%;
+            }
+        }
+
+        &__info {
+            bottom: 7rem;
+        }
+
+        &__title {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        &__text {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    // content
+
+    .content {
+        &__membership {
+            margin-top: 3rem;
+        }
+    }
+}
+
+@media screen and ( max-width: 991px ) {
+    .content {
+        // header
+        &__back {
+            font-size: 14px;
+        }
+
+        &__icon {
+            width: 20px;
+        }
+
+        &__login {
+            font-size: 13px;
+        }
+
+        // membership
+        
+        &__title {
+            font-size: 21px;
+            margin-bottom: 0;
+        }
+
+        &__subtitle {
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        &__input {
+            input {
+                height: 60px;
+            }
+        }
+
+        &__button {
+            height: 60px;
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        // footer
+    
+        &__footer {
+            bottom: 1.5rem;
+        }
+
+        &__copyright {
+            font-size: 14px;
+        }
+
+        &__help {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and ( max-width: 767px ) {
+    // conainer
+    .container {
+        height: unset;
+        flex-direction: column;
+    }
+
+    // sidebar
+    .sidebar {
+        width: 100%;
+
+        &__info {
+            bottom: 5rem;
+        }
+    }
+
+    // content
+
+    .content {
+        width: calc(100% - 4rem);
+
+        &__header {
+            align-items: center;
+        }
+
+        &__back {
+            font-size: 12px;
+        }
+
+        &__login {
+            font-size: 12px;
+        }
+
+        &__show {
+            font-size: 10px;
+        }
+
+        &__footer {
+            position: unset;
+
+            margin: 0 auto;
+            margin-top: 2rem;
+        }
+    }
+}
+
+@media screen and ( max-width: 576px ) {
+    .content {
+        // header
+        &__signed {
+            display: none;
+        }
+
+        // membership 
+        &__input {
+            input {
+                font-size: 14px;
+            }
+        }
+
+        &__button {
+            display: flex;
+            span {
+                width: auto;
+            }
+        }
+
+        // footer
+        &__footer {
+            flex-direction: column-reverse;
+            bottom: .5rem;
+            text-align: center;
+        }
+
+        &__help {
+            display: flex;
+            width: auto;
+        }
+
+        &__login {
+            display: flex;
+            width: auto;
+        }
+    }
+}
+
+@media screen and ( max-width: 350px ) {
+    .content {
+        &__input {
+            input {
+                height: 45px;
+                font-size: 12px;
+            }
+        }
+
+        &__show {
+            font-size: 10px;
+        }
+
+        &__button {
+            height: 45px;
+            font-size: 14px;
+        }
+
+        &__issue {
+            font-size: 14px;
+        }
+    }
+}
+
+// width & height
+
+@media screen and (min-width: 769px) and (max-height: 850px) {
+    .container {
+        height: auto;
+    }
+
+    .sidebar {
+        height: auto;
+    }
+
+    .content {
+        min-height: 850px;
+    }
+}

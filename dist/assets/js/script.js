@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){const t=document.querySelector("#show"),n=document.querySelector("#password");t.addEventListener("click",e=>{e.preventDefault(),"text"===n.type?(n.type="password",t.textContent="show"):(n.type="text",t.textContent="hide")})});
