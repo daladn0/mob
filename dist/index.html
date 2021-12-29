@@ -31,33 +31,42 @@
         <div class="content">
             <header class="content__navbar">
                 <a href='#' class="content__back">
-    <svg xmlns="http://www.w3.org/2000/svg" class="content__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    <svg width="12" height="20" viewBox="0 0 12 20">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M11.0314 0.469364C11.1724 0.610071 11.2517 0.801123 11.2517 1.00036C11.2517 1.19961 11.1724 1.39066 11.0314 1.53136L2.56086 10.0004L11.0314 18.4694C11.3246 18.7626 11.3246 19.238 11.0315 19.5313C10.7383 19.8246 10.2629 19.8247 9.96955 19.5315L0.969364 10.5314C0.828302 10.3907 0.749023 10.1996 0.749023 10.0004C0.749023 9.80112 0.828302 9.61007 0.969364 9.46936L9.96937 0.469364C10.1101 0.328302 10.3011 0.249023 10.5004 0.249023C10.6996 0.249023 10.8907 0.328301 11.0314 0.469364V0.469364Z"
+        />
     </svg>
     <span>Return Home</span>
 </a>
                 <div class="content__login">
-                    <span class="content__signed">Already a Member?</span> <a href="/mob/dist/signin.html">log in now</a>
+                    <span class="content__signed">Already a Member?</span> <a href="/mob/dist/signin.html" id="login">log in now</a>
                 </div>
             </header>
             <div class="content__membership">
                 <h2 class="content__title">Become an exclusive member</h2>
                 <p class="content__subtitle">Sign up and join the partnership</p>
-                <form class="content__form">
-                    <div class="content__input">
-                        <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <input type="text" placeholder="Your name">
+                <form class="content__form" id="form">
+                    <div class="content__field" id="name-field">
+                        <div class="content__input">
+                            <input type="text" placeholder="Your name" id="name">
+                            <svg enable-background="new 0 0 52 52" id="Layer_1" version="1.1" viewBox="0 0 52 52"><g><path d="M49.4656715,41.2599487l-20.25-34.4099731C28.5256691,5.6900024,27.3256569,5,25.9956398,5   c-1.3200073,0-2.5299683,0.6900024-3.2099609,1.8499756l-20.25,34.4099731   c-0.710022,1.2000122-0.7200317,2.6400146-0.0300293,3.8500366C3.1856432,46.289978,4.3956652,47,5.7456408,47h40.5100098   c1.3499756,0,2.5599976-0.710022,3.2299805-1.8900146C50.1856422,43.8999634,50.1756325,42.4599609,49.4656715,41.2599487z    M23.9363747,19.8552856h3.3808594v3.1870117l-0.7246094,8.9189453H24.660984l-0.7246094-8.9189453V19.8552856z    M26.9065895,37.1985474c-0.3540039,0.3623047-0.7768555,0.5439453-1.2675781,0.5439453   c-0.4912109,0-0.9140625-0.1816406-1.2680664-0.5439453c-0.3544922-0.3623047-0.53125-0.7939453-0.53125-1.296875   c0-0.5019531,0.1767578-0.9345703,0.53125-1.296875c0.3540039-0.3623047,0.7768555-0.5439453,1.2680664-0.5439453   c0.4907227,0,0.9135742,0.1816406,1.2675781,0.5439453s0.53125,0.7949219,0.53125,1.296875   C27.4378395,36.4046021,27.2605934,36.8362427,26.9065895,37.1985474z"/></g></svg>
+                        </div>
+                        <p class="content__error" ></p>
                     </div>
-                    <div class="content__input">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-    <input type="email" placeholder="Your e-mail">
+                    <div class="content__field" id="email-field">
+    <div class="content__input">
+        <input type="email" placeholder="Your e-mail" id="email">
+        <svg enable-background="new 0 0 52 52" id="Layer_1" version="1.1" viewBox="0 0 52 52"><g><path d="M49.4656715,41.2599487l-20.25-34.4099731C28.5256691,5.6900024,27.3256569,5,25.9956398,5   c-1.3200073,0-2.5299683,0.6900024-3.2099609,1.8499756l-20.25,34.4099731   c-0.710022,1.2000122-0.7200317,2.6400146-0.0300293,3.8500366C3.1856432,46.289978,4.3956652,47,5.7456408,47h40.5100098   c1.3499756,0,2.5599976-0.710022,3.2299805-1.8900146C50.1856422,43.8999634,50.1756325,42.4599609,49.4656715,41.2599487z    M23.9363747,19.8552856h3.3808594v3.1870117l-0.7246094,8.9189453H24.660984l-0.7246094-8.9189453V19.8552856z    M26.9065895,37.1985474c-0.3540039,0.3623047-0.7768555,0.5439453-1.2675781,0.5439453   c-0.4912109,0-0.9140625-0.1816406-1.2680664-0.5439453c-0.3544922-0.3623047-0.53125-0.7939453-0.53125-1.296875   c0-0.5019531,0.1767578-0.9345703,0.53125-1.296875c0.3540039-0.3623047,0.7768555-0.5439453,1.2680664-0.5439453   c0.4907227,0,0.9135742,0.1816406,1.2675781,0.5439453s0.53125,0.7949219,0.53125,1.296875   C27.4378395,36.4046021,27.2605934,36.8362427,26.9065895,37.1985474z"/></g></svg>
+    </div>
+    <p class="content__error" ></p>
 </div>
-<div class="content__input">
-    <svg height="24" id="svg8" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><defs id="defs2"/><g id="g1896" style="display:inline" transform="translate(0,-330.65)"><path d="m 12,332.65 c -2.7527,0 -5,2.2473 -5,5 v 3 c -1.8456217,0 -3,1.52123 -3,2.83203 v 6.33399 C 4,351.36838 5.28161,352.65 6.83398,352.65 H 17.16602 C 18.71839,352.65 20,351.36838 20,349.81602 v -6.33399 C 20,341.59871 18.47856,340.65 17,340.65 v -3 c 0,-2.7527 -2.2473,-5 -5,-5 z m 0,2 c 1.6793,0 3,1.3207 3,3 v 3 H 9 v -3 c 0,-1.6793 1.3207,-3 3,-3 z m -5.16602,8 h 10.33204 c 0.47896,0 0.83398,0.35306 0.83398,0.83203 v 6.33399 c 0,0.47895 -0.35502,0.83398 -0.83398,0.83398 H 6.83398 C 6.35502,350.65 6,350.29497 6,349.81602 v -6.33399 C 6,343.00306 6.35502,342.65 6.83398,342.65 Z" id="rect1873" style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"/></g></svg>
-    <input type="password" placeholder="Your password" id="password">
-    <button class="content__show" id="show" >show</button>
+<div class="content__field" id="password-field">
+    <div class="content__input">
+        <input type="password" placeholder="Your password" id="password">
+        <p class="content__show" id="show" >show</p>
+        <svg enable-background="new 0 0 52 52" id="Layer_1" version="1.1" viewBox="0 0 52 52"><g><path d="M49.4656715,41.2599487l-20.25-34.4099731C28.5256691,5.6900024,27.3256569,5,25.9956398,5   c-1.3200073,0-2.5299683,0.6900024-3.2099609,1.8499756l-20.25,34.4099731   c-0.710022,1.2000122-0.7200317,2.6400146-0.0300293,3.8500366C3.1856432,46.289978,4.3956652,47,5.7456408,47h40.5100098   c1.3499756,0,2.5599976-0.710022,3.2299805-1.8900146C50.1856422,43.8999634,50.1756325,42.4599609,49.4656715,41.2599487z    M23.9363747,19.8552856h3.3808594v3.1870117l-0.7246094,8.9189453H24.660984l-0.7246094-8.9189453V19.8552856z    M26.9065895,37.1985474c-0.3540039,0.3623047-0.7768555,0.5439453-1.2675781,0.5439453   c-0.4912109,0-0.9140625-0.1816406-1.2680664-0.5439453c-0.3544922-0.3623047-0.53125-0.7939453-0.53125-1.296875   c0-0.5019531,0.1767578-0.9345703,0.53125-1.296875c0.3540039-0.3623047,0.7768555-0.5439453,1.2680664-0.5439453   c0.4907227,0,0.9135742,0.1816406,1.2675781,0.5439453s0.53125,0.7949219,0.53125,1.296875   C27.4378395,36.4046021,27.2605934,36.8362427,26.9065895,37.1985474z"/></g></svg>
+    </div>
+    <p class="content__error" ></p>
 </div>
                     <button class="content__button">
     <span>Become a Member</span>
@@ -68,6 +77,13 @@
             d="M12,52h62.344L52.888,73.456c-1.562,1.562-1.562,4.095-0.001,5.656c1.562,1.562,4.096,1.562,5.658,0l28.283-28.284l0,0  c0.186-0.186,0.352-0.391,0.498-0.609c0.067-0.101,0.114-0.21,0.172-0.315c0.066-0.124,0.142-0.242,0.195-0.373  c0.057-0.135,0.089-0.275,0.129-0.415c0.033-0.111,0.076-0.217,0.099-0.331C87.973,48.525,88,48.263,88,48l0,0  c0-0.003-0.001-0.006-0.001-0.009c-0.001-0.259-0.027-0.519-0.078-0.774c-0.024-0.12-0.069-0.231-0.104-0.349  c-0.039-0.133-0.069-0.268-0.123-0.397c-0.058-0.139-0.136-0.265-0.208-0.396c-0.054-0.098-0.097-0.198-0.159-0.292  c-0.146-0.221-0.314-0.427-0.501-0.614L58.544,16.888c-1.562-1.562-4.095-1.562-5.657-0.001c-1.562,1.562-1.562,4.095,0,5.658  L74.343,44L12,44c-2.209,0-4,1.791-4,4C8,50.209,9.791,52,12,52z" />
     </svg>
 </button>
+<div class="content__success">
+    <?xml version="1.0" ?><svg id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
+        .st0{fill:#2BB673;}
+        .st1{fill:none;stroke:#FFFFFF;stroke-width:30;stroke-miterlimit:10;}
+    </style><path class="st0" d="M489,255.9c0-0.2,0-0.5,0-0.7c0-1.6,0-3.2-0.1-4.7c0-0.9-0.1-1.8-0.1-2.8c0-0.9-0.1-1.8-0.1-2.7  c-0.1-1.1-0.1-2.2-0.2-3.3c0-0.7-0.1-1.4-0.1-2.1c-0.1-1.2-0.2-2.4-0.3-3.6c0-0.5-0.1-1.1-0.1-1.6c-0.1-1.3-0.3-2.6-0.4-4  c0-0.3-0.1-0.7-0.1-1C474.3,113.2,375.7,22.9,256,22.9S37.7,113.2,24.5,229.5c0,0.3-0.1,0.7-0.1,1c-0.1,1.3-0.3,2.6-0.4,4  c-0.1,0.5-0.1,1.1-0.1,1.6c-0.1,1.2-0.2,2.4-0.3,3.6c0,0.7-0.1,1.4-0.1,2.1c-0.1,1.1-0.1,2.2-0.2,3.3c0,0.9-0.1,1.8-0.1,2.7  c0,0.9-0.1,1.8-0.1,2.8c0,1.6-0.1,3.2-0.1,4.7c0,0.2,0,0.5,0,0.7c0,0,0,0,0,0.1s0,0,0,0.1c0,0.2,0,0.5,0,0.7c0,1.6,0,3.2,0.1,4.7  c0,0.9,0.1,1.8,0.1,2.8c0,0.9,0.1,1.8,0.1,2.7c0.1,1.1,0.1,2.2,0.2,3.3c0,0.7,0.1,1.4,0.1,2.1c0.1,1.2,0.2,2.4,0.3,3.6  c0,0.5,0.1,1.1,0.1,1.6c0.1,1.3,0.3,2.6,0.4,4c0,0.3,0.1,0.7,0.1,1C37.7,398.8,136.3,489.1,256,489.1s218.3-90.3,231.5-206.5  c0-0.3,0.1-0.7,0.1-1c0.1-1.3,0.3-2.6,0.4-4c0.1-0.5,0.1-1.1,0.1-1.6c0.1-1.2,0.2-2.4,0.3-3.6c0-0.7,0.1-1.4,0.1-2.1  c0.1-1.1,0.1-2.2,0.2-3.3c0-0.9,0.1-1.8,0.1-2.7c0-0.9,0.1-1.8,0.1-2.8c0-1.6,0.1-3.2,0.1-4.7c0-0.2,0-0.5,0-0.7  C489,256,489,256,489,255.9C489,256,489,256,489,255.9z" id="XMLID_3_"/><g id="XMLID_1_"><line class="st1" id="XMLID_2_" x1="213.6" x2="369.7" y1="344.2" y2="188.2"/><line class="st1" id="XMLID_4_" x1="233.8" x2="154.7" y1="345.2" y2="266.1"/></g></svg>
+    <p>You have been signed up successfuly!</p>
+</div>
                 </form>
             </div>
             <footer class="content__footer" >

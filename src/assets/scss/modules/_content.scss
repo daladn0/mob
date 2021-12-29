@@ -26,31 +26,24 @@
         line-height: 23px;
         color: #424242;
 
-        &:after {
-            content: "";
-
-            position: absolute;
-            top: 50%;
-
-            left: 15%;
-            width: 0%;
-            height: 1px;
-
-            background: #424242;
-            transform: translateY(-50%);
-            transition: all .1s linear;
-        }
-
-        &:hover:after {
-            width: 30%;
-        }
-
         span {
+            margin-left: 10px;
             transition: all .1s linear;
         }
 
-        &:hover span {
-            transform: translateY(100%);
+        svg {
+            transition: all .1s linear;
+            fill: #757575;
+        }
+
+        &:hover {
+            svg {
+                fill: #a0a0a0;
+            }
+
+            span {
+                color: #a0a0a0;
+            }
         }
     }
 
@@ -141,61 +134,127 @@
         max-width: 95%;
     }
 
+    &__field {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.1rem;
+        
+        &:nth-child(2) {
+            input { background-image: url('../images/email.svg'); }
+        }
+        
+        &:nth-child(3) {
+            input { 
+                background-image: url('../images/password.svg');
+                padding-right: 60px;
+            }
+        }
+
+        &_error {
+            .content {
+                &__input {
+                    border: 1px solid var(--color-error);
+                    svg {
+                        display: block;
+                    }
+                }
+
+                &__show {
+                    right: 55px;
+                }
+
+                &__error {
+                    display: block;
+                }
+            }
+
+            &:nth-child(3) {
+                input { 
+                    padding-right: 100px;
+                }
+            }
+        }
+    }
+
     &__input {
+        position: relative;
+        width: 100%;
+        border: 1px solid #757575;
         display: flex;
         align-items: center;
 
-        margin-bottom: 1.1rem;
-        padding-left: 20px;
-
-        background: #fff;
-        border: 1px solid #757575;
-
         input {
-            width: 90%;
-            height: 72px;
-            padding-right: 20px;
-
-            border: none;
-            outline: none;
-
+            position: relative;
+            width: calc(100% - 110px);
+            padding: 20px 55px;
+        
             font-family: var(--font);
             font-style: normal;
             font-weight: normal;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 28px;
             display: flex;
             align-items: center;
             color: #424242;
+            border: none;
+            outline: none;
+
+            background-image: url('../images/user.svg');
+            background-repeat: no-repeat;
+            background-position: 20px 54%;
+
+            &::placeholder,
+            &::hover,
+            &::focus {
+                font-family: var(--font);
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 28px;
+                display: flex;
+                align-items: center;
+                color: #424242;
+            }
         }
 
         svg {
-            color: #9E9E9E;
-            margin-right: 0.9rem;
-            width: 25px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            fill: var(--color-error);
         }
-
-        &:nth-child(3) svg {fill: #9E9E9E;}
     }
 
     &__show {
-        width: 40px;
-        margin-right: 1rem;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
 
-        border: none;
-        background: transparent;
         font-family: var(--font);
         font-style: normal;
         font-weight: normal;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 23px;
-        text-align: right;
-        color: #797979;
         text-transform: uppercase;
+        text-align: right;
+        color: #9E9E9E;
+        margin: 0;
         cursor: pointer;
-        outline: none;
     }
 
+    &__error {
+        margin: 10px 0 0 0;
+        font-family: var(--font);
+        color: var(--color-error);
+        display: none;
+        text-align: left;
+    }
+    
     &__button {
         display: flex;
         align-items: center;
@@ -226,8 +285,28 @@
         &:hover {
             background: darken(#24243E, 3%);
         }
+    }
 
-        
+    &__success {
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        font-family: var(--font);
+        margin-top: 1rem;
+        font-size: 17px;
+        text-align: center;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+        }
     }
 
     @keyframes animatedArrow {

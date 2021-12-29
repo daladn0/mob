@@ -23,13 +23,13 @@
             <header class="content__navbar">
                 @@include('assets/parts/back.html')
                 <div class="content__login">
-                    <span class="content__signed">Not a member yet?</span> <a href="/mob/dist/">join now</a>
+                    <span class="content__signed">Not a member yet?</span> <a href="/mob/dist/" id="signup">join now</a>
                 </div>
             </header>
             <div class="content__membership">
                 <h2 class="content__title">WELCOME BACK EXCLUSIVE MEMBER</h2>
                 <p class="content__subtitle">LOG IN TO CONTINUE</p>
-                <form class="content__form">
+                <form class="content__form" id="form">
                     @@include('assets/parts/inputs.html')
                     @@include('assets/parts/button.html')
                     <a href="#" class="content__issue">Having Issues with your Password?</a>
