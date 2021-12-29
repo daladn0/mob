@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
-	const passwordBtn = document.querySelector('#show')
+	const passwordBtn   = document.querySelector('#show')
     const passwordInput = document.querySelector('#password')
+    const loginBtn      = document.querySelector('#login')
+    const signupBtn     = document.querySelector('#signup')
 
     passwordBtn.addEventListener('click', e => {
         e.preventDefault()
@@ -13,6 +15,5 @@ document.addEventListener('DOMContentLoaded', function(){
             passwordInput.type = 'text'
             passwordBtn.textContent = 'hide'
         }
-
     })
 });
