@@ -1,126 +1,136 @@
-document.addEventListener('DOMContentLoaded', function(){
-    const passwordBtn = document.querySelector("#show");
-    const passwordInput = document.querySelector("#password");
+document.addEventListener("DOMContentLoaded", function () {
+  const passwordBtn = document.querySelector("#show");
+  const passwordInput = document.querySelector("#password");
 
-    document.querySelector('.content__help').addEventListener('click', e => {
-        e.preventDefault()
-    })
+  document.querySelector(".content__help").addEventListener("click", (e) => {
+    e.preventDefault();
+  });
 
-    // Show / Hide password
-    passwordBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-  
-      // reset type of input field and label of switch button
-      if (passwordInput.type === "text") {
-        passwordInput.type = "password";
-        passwordBtn.textContent = "show";
+  // Show / Hide password
+  passwordBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // reset type of input field and label of switch button
+    if (passwordInput.type === "text") {
+      passwordInput.type = "password";
+      passwordBtn.textContent = "show";
+      passwordInput.focus()
+    } else {
+      passwordInput.type = "text";
+      passwordBtn.textContent = "hide";
+      passwordInput.focus()
+    }
+  });
+
+  // Form validation
+  const form = document.querySelector("#form");
+  const successLabel = document.querySelector(".content__success");
+
+  formValidate("#form", () => {
+    successLabel.style.display = "flex";
+    setTimeout(() => (successLabel.style.display = "none"), 3000);
+  })
+
+  function formValidate(formSelector, callback) {
+      const $form = document.querySelector(formSelector);
+
+      if ($form) {
+        $form.addEventListener("submit", e => {
+          e.preventDefault();
+          successLabel.style.display = "none"
+
+          // Validate form
+          validation();
+          // Check whether all inputs are valid and execute callback
+          isThereError(callback);
+
+          // Validate form on it's changing          
+          $form.addEventListener("change", e => {
+            if ( e.target.id !== 'password' ) validation()
+          })
+        });
+
       } else {
-        passwordInput.type = "text";
-        passwordBtn.textContent = "hide";
+        throw new Error(formSelector + " is not a valid DOM element!");
       }
-    });
-  
-    // Form validation
-    const form = document.querySelector('#form')
-    const name = document.querySelector('#name')
-    const email = document.querySelector('#email')
-    const password = document.querySelector('#password')
-    const successLabel = document.querySelector('.content__success')
 
+      function validation() {
+        //   Validating each input inside of a form
+        const inputs = $form.querySelectorAll("input");
+        inputs.forEach((input) => {
+          const inputValue = input.value.trim();
 
-    form.addEventListener('submit', e => {
-        e.preventDefault()
-
-        const isValid = validateForm()
-
-        if ( isValid ) {
-            cleanInputs()
-            successLabel.style.display = 'flex'
-            setTimeout(() => {
-                successLabel.style.display = 'none'
-            }, 3000)
-        }
-
-        form.addEventListener('change', e => {
-            if( e.target.id === 'password' ) return
-            const isValid = validateForm()
-        })
-    })
-
-    function validateForm() {
-        // get the values from the input
-        const emailInput = email.value.trim()
-        const passwordInput = password.value.trim()
-
-        // Name field
-
-        if ( name ) {
-            const nameInput = name.value.trim()
-
-            if ( nameInput === '' ) {
-                setErrorFor(name, `Name field shouldn't be empty`)
+          if (input.id === "name") {
+            if (inputValue === "" || inputValue.length <= 1) {
+              setErrorFor(
+                input,
+                "Name field should contain at least 2 letters!"
+              );
+            } else {
+              setSuccessFor(input);
             }
-            
-            else {
-                setSuccessFor(name)
+          } else if (input.id === "email") {
+            if (inputValue === "") {
+              setErrorFor(input, "Email field is empty!");
+            } else if (!isEmailValid(inputValue)) {
+              setErrorFor(input, "Email is not valid!");
+            } else {
+              setSuccessFor(input);
             }
-        }
+          } else if (input.id === "password") {
+            if (inputValue === "") {
+              setErrorFor(input, "Password field is empty!");
+            } else if (!isPasswordValid(inputValue)) {
+              setErrorFor(
+                input,
+                "Password should contain 8 letters, one number, onu upper and lower case char!"
+              );
+            } else {
+              setSuccessFor(input);
+            }
+          }
+        });
 
-        // Email field
-        if ( emailInput === '' || !isEmailValid(emailInput) ) {
-            setErrorFor(email, `The email is not valid!`)
-        }
         
-        else {
-            setSuccessFor(email)
+      }
+
+      function isThereError(callback) {
+          //   If there are validation errors
+        const error = $form.querySelector(".content__field_error");
+
+        if (!error) {
+          cleanInputs();
+          callback();
+        } else {
+          //   Focus not valid input
+          error.querySelector("input").focus();
         }
+      }
 
-        // Password field
-        if ( passwordInput === '' ) {
-            setErrorFor(password, `Password field shouldn't be empty`)
-        }
+      function setErrorFor(element, message) {
+        const field = element.closest(".content__field");
+        field.classList.add("content__field_error");
+        field.querySelector(".content__error").textContent = message;
+      }
 
-        else if ( !isPasswordValid(passwordInput) ) {
-            setErrorFor(password, `Your password should contain at least 8 letters, one number, one upper and lower case letters.`)
-        }
-        
-        else {
-            setSuccessFor(password)
-        }
+      function setSuccessFor(element) {
+        const field = element.closest(".content__field");
+        field.classList.remove("content__field_error");
+        field.querySelector(".content__error").textContent = "";
+      }
 
-        // Checking whether there is an error field
-        const errorField = document.querySelector('.content__field_error input')
-        if ( errorField ) {
-            errorField.focus()
-            successLabel.style.display = 'none'
-            return false
-        }
+      function isEmailValid(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        );
+      }
 
-        return true
-    }
-
-    function setErrorFor(element, message) {
-        const field = element.closest('.content__field')
-        field.classList.add('content__field_error')
-        field.querySelector('.content__error').textContent = message
-    }
-
-    function setSuccessFor(element) {
-        const field = element.closest('.content__field')
-        field.classList.remove('content__field_error')
-        field.querySelector('.content__error').textContent = ''
-    }
-
-    function isEmailValid(email) {
-	    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-    }
-
-    function isPasswordValid(password) {
+      function isPasswordValid(password) {
         return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
-    }
+      }
 
-    function cleanInputs() {
-        form.querySelectorAll('input').forEach( input => input.value = '' )
-    }
-
+      function cleanInputs() {
+        form.querySelectorAll("input").forEach((input) => (input.value = ""));
+      }
+  }
 });

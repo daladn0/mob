@@ -1,3 +1,22 @@
 .sidebar {
     background: linear-gradient(180deg, #24243E 0%, #59599B 48.52%, #0F0C29 100%);
 }
+
+.content {
+    &__field {
+        &:nth-child(1) {
+            // input { background-image: url('../images/email.svg'); }
+        }
+        
+        &:nth-child(2) {
+            input { 
+                // background-image: url('../images/password.svg');
+                padding-right: 60px;
+            }
+        }
+
+        &_error:nth-child(2) input {
+            padding-right: 110px;
+        }
+    }
+}

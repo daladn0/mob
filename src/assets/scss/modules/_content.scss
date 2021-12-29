@@ -142,12 +142,12 @@
         margin-bottom: 1.1rem;
         
         &:nth-child(2) {
-            input { background-image: url('../images/email.svg'); }
+            // input { background-image: url('../images/email.svg'); }
         }
         
         &:nth-child(3) {
             input { 
-                background-image: url('../images/password.svg');
+                // background-image: url('../images/password.svg');
                 padding-right: 60px;
             }
         }
@@ -156,7 +156,7 @@
             .content {
                 &__input {
                     border: 1px solid var(--color-error);
-                    svg {
+                    .error-icon {
                         display: block;
                     }
                 }
@@ -185,6 +185,14 @@
         display: flex;
         align-items: center;
 
+        img {
+            position: absolute;
+            top: 54%;
+            left: 15px;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
         input {
             position: relative;
             width: calc(100% - 110px);
@@ -201,9 +209,9 @@
             border: none;
             outline: none;
 
-            background-image: url('../images/user.svg');
-            background-repeat: no-repeat;
-            background-position: 20px 54%;
+            // background-image: url('../images/user.svg');
+            // background-repeat: no-repeat;
+            // background-position: 20px 54%;
 
             &::placeholder,
             &::hover,
@@ -219,7 +227,20 @@
             }
         }
 
-        svg {
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .error-icon {
             display: none;
             position: absolute;
             top: 50%;
