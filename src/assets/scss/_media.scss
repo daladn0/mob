@@ -1,3 +1,9 @@
+@media screen and ( max-width: 1700px ) {
+    .sidebar {
+        width: 40%;
+    }
+}
+
 @media screen and ( max-width: 1200px ) {
     .container {
         height: unset;
@@ -6,7 +12,7 @@
 
     // sidebar
     .sidebar {
-        width: 40%;
+        width: 50%;
         height: 100vh;
 
         &__logo {
@@ -40,6 +46,10 @@
 }
 
 @media screen and ( max-width: 991px ) {
+    .sidebar {
+        width: 50%;
+    }
+
     .content {
         // header
         &__back {
@@ -69,7 +79,7 @@
 
         &__input {
             input {
-                height: 60px;
+                padding: 16px 55px;
             }
         }
 
@@ -121,15 +131,11 @@
         }
 
         &__back {
-            font-size: 12px;
+            font-size: 14px;
         }
 
         &__login {
             font-size: 12px;
-        }
-
-        &__show {
-            font-size: 10px;
         }
 
         &__footer {
@@ -178,6 +184,14 @@
             display: flex;
             width: auto;
         }
+
+        &__show {
+            font-size: 12px;
+        }
+
+        &__error {
+            font-size: 15px;
+        }
     }
 }
 
@@ -185,7 +199,7 @@
     .content {
         &__input {
             input {
-                height: 45px;
+                padding: 8px 50px;
                 font-size: 12px;
             }
         }
@@ -195,8 +209,12 @@
         }
 
         &__button {
-            height: 45px;
+            height: 46px;
             font-size: 14px;
+
+            svg {
+                width: 20px;
+            }
         }
 
         &__issue {
@@ -204,6 +222,42 @@
         }
     }
 }
+
+@media screen and ( max-width: 300px ) {
+    .content {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        
+        &__input input{
+            background-size: 15px;
+        }
+
+        &__login {
+            font-size: 11px;
+        }
+
+        &__back {
+            font-size: 12px;
+        }
+
+        &__title {
+            font-size: 18px;
+        }
+
+        &__subtitle {
+            font-size: 11px;
+        }
+
+        &__error {
+            font-size: 12px;
+        }
+
+        &__success p {
+            font-size: 13px;
+        }
+    }
+}
+
 
 // width & height
 

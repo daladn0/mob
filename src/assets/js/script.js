@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
     const passwordBtn = document.querySelector("#show");
     const passwordInput = document.querySelector("#password");
-    const loginBtn = document.querySelector("#login");
-    const signupBtn = document.querySelector("#signup");
-  
+
+    document.querySelector('.content__help').addEventListener('click', e => {
+        e.preventDefault()
+    })
+
+    // Show / Hide password
     passwordBtn.addEventListener("click", (e) => {
       e.preventDefault();
   
@@ -17,16 +20,6 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   
-    // Prevent default behavior for all buttons and links on the page except "Log in now" & "Join now"
-    function prevent(selector) {
-      document.querySelectorAll(selector).forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-          if (elem !== loginBtn && elem !== signupBtn) e.preventDefault();
-        });
-      });
-    }
-    prevent("a");
-
     // Form validation
     const form = document.querySelector('#form')
     const name = document.querySelector('#name')
@@ -34,13 +27,27 @@ document.addEventListener('DOMContentLoaded', function(){
     const password = document.querySelector('#password')
     const successLabel = document.querySelector('.content__success')
 
+
     form.addEventListener('submit', e => {
         e.preventDefault()
 
-        checkInputs()
+        const isValid = validateForm()
+
+        if ( isValid ) {
+            cleanInputs()
+            successLabel.style.display = 'flex'
+            setTimeout(() => {
+                successLabel.style.display = 'none'
+            }, 3000)
+        }
+
+        form.addEventListener('change', e => {
+            if( e.target.id === 'password' ) return
+            const isValid = validateForm()
+        })
     })
 
-    function checkInputs() {
+    function validateForm() {
         // get the values from the input
         const emailInput = email.value.trim()
         const passwordInput = password.value.trim()
@@ -86,16 +93,10 @@ document.addEventListener('DOMContentLoaded', function(){
         if ( errorField ) {
             errorField.focus()
             successLabel.style.display = 'none'
-        }
-        
-        else {
-            cleanInputs()
-            successLabel.style.display = 'flex'
-            setTimeout(() => {
-                successLabel.style.display = 'none'
-            }, 3000)
+            return false
         }
 
+        return true
     }
 
     function setErrorFor(element, message) {
@@ -121,4 +122,5 @@ document.addEventListener('DOMContentLoaded', function(){
     function cleanInputs() {
         form.querySelectorAll('input').forEach( input => input.value = '' )
     }
+
 });

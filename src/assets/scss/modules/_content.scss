@@ -279,7 +279,7 @@
             width: 25px;
             max-height: 100%;
             fill: #fff;
-            animation: 5s linear infinite animatedArrow;
+            animation: 3s linear infinite animatedArrow;
         }
 
         &:hover {
@@ -311,19 +311,23 @@
 
     @keyframes animatedArrow {
         0% {
-          transform: translateX(0%);
+          transform: translateX(0);
         }
       
-        33% {
+        25% {
           transform: translateX(30%);
         }
 
-        66% {
+        50% {
+          transform: translateX(0%);
+        }
+
+        75% {
             transform: translateX(-30%);
         }
       
         100% {
-            transform: translateX(0%);
+            transform: translateX(0);
         }
     }
 
