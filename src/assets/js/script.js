@@ -12,15 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // reset type of input field and label of switch button
     if (passwordInput.type === "text") {
-      passwordInput.type = "password";
-      passwordBtn.textContent = "show";
-      passwordInput.focus()
+      setPasswordVisible('password', 'show')
     } else {
-      passwordInput.type = "text";
-      passwordBtn.textContent = "hide";
-      passwordInput.focus()
+      setPasswordVisible('text', 'hide')
     }
+
   });
+
+  function setPasswordVisible(type, state) {
+    passwordInput.type = type;
+    passwordBtn.textContent = state;
+    passwordInput.focus()
+  }
 
   // Form validation
   const form = document.querySelector("#form");
