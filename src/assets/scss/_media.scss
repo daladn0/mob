@@ -1,10 +1,37 @@
 @media screen and ( max-width: 1700px ) {
+    .modal {
+        &__heading {
+            font-size: 22px;
+        }
+
+        &__info {
+            padding: 0 2rem;
+            max-width: calc(100% - 4rem);
+        }
+    }
+
     .sidebar {
         width: 40%;
     }
 }
 
 @media screen and ( max-width: 1200px ) {
+    .modal {
+        &__header {
+            padding: 1rem;
+        }
+
+        &__heading {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        &__info {
+            padding: 0 1rem;
+            max-width: calc(100% - 2rem);
+        }
+    }
+
     .container {
         height: unset;
         min-height: 500px;
@@ -46,6 +73,12 @@
 }
 
 @media screen and ( max-width: 991px ) {
+    .modal {
+        &__content {
+            width: 80%;
+        }
+    }
+
     .sidebar {
         width: 50%;
     }
@@ -106,6 +139,13 @@
 }
 
 @media screen and ( max-width: 767px ) {
+    .modal {
+        &__close {
+            top: 1rem;
+            right: 1rem;
+        }
+    }
+
     // conainer
     .container {
         height: unset;
@@ -148,6 +188,52 @@
 }
 
 @media screen and ( max-width: 576px ) {
+    .modal {
+        &__heading {
+            font-size: 16px;
+        }
+
+        &__info {
+            .content__input input {
+                font-size: 14px;
+
+                &::placeholder {
+                    font-size: 14px;
+                }
+            }
+
+            .content__field_error input {
+                padding-right: 90px;
+            }
+            
+            .content__field_error .content__error {
+                font-size: 13px;
+            }
+        }
+
+        &__title {
+            font-size: 14px;
+        }
+
+        &__text {
+            font-size: 14px;
+        }
+
+        // modal_success
+        &_success {
+            .modal__content {
+                width: 95%;
+            }
+        }
+
+        &__message {
+            .modal__p {
+                font-size: 16px;
+            }
+        }
+
+    }
+
     .content {
         // header
         &__signed {
@@ -196,6 +282,12 @@
 }
 
 @media screen and ( max-width: 350px ) {
+    .modal {
+        &__content {
+            width: 95%;
+        }
+    }
+
     .content {
         &__input {
             input {
