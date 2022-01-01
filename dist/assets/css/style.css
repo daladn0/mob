@@ -992,6 +992,30 @@ template {
         font-size: 16px
     }
 
+    .modal__info .content__input input {
+        font-size: 14px
+    }
+
+    .modal__info .content__input input::-webkit-input-placeholder {
+        font-size: 14px
+    }
+
+    .modal__info .content__input input::-moz-placeholder {
+        font-size: 14px
+    }
+
+    .modal__info .content__input input:-ms-input-placeholder {
+        font-size: 14px
+    }
+
+    .modal__info .content__input input::-ms-input-placeholder {
+        font-size: 14px
+    }
+
+    .modal__info .content__input input::placeholder {
+        font-size: 14px
+    }
+
     .modal__info .content__field_error input {
         padding-right: 90px
     }

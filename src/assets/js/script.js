@@ -1,6 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Confirm email/reset password
+
+  const confirmForm = document.querySelector(".form_confirm");
+  const resetForm = document.querySelector(".form_reset");
+  const heading = document.querySelector(".content__subtitle");
+
+  heading.innerHTML = "Confirm your email";
+
+  if (confirmForm && resetForm) {
+    resetForm.style.display = "none";
+  }
+
+  // Hide cofirm form and show reset password form if email is confirmed
+  formValidate(".form_confirm", () => {
+    resetForm.style.display = "";
+    confirmForm.style.display = "none";
+    heading.innerHTML = "Reset password";
+  });
+
+  formValidate(".form_reset", () => {
+    openSuccessModal("Your password has been changed!");
+    disableSuccessClose()
+    setTimeout(() => {
+      window.location.href = "/mob/dist";
+    }, 2000)
+  });
+
   // Modal window
-  function modal({ heading = "FoxHub", modalWindow }) {
+  function modal({ modalWindow, heading = "FoxHub" }) {
     const modal = document.querySelector(modalWindow);
     const close = modal.querySelector(".modal__close");
     const title = modal.querySelector(".modal__heading");
@@ -16,23 +43,30 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.querySelector(".modal__p").innerHTML = content;
       }
       modal.classList.add("modal_active");
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
       modal.classList.remove("modal_active");
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
-
-    modal.addEventListener("click", (e) => {
+    
+    const handleClose = (e) => {
       if (e.target === modal || e.target === close) {
         closeModal();
       }
-    });
+    }
+
+    modal.addEventListener("click", handleClose);
+
+    function disableClose() {
+      modal.removeEventListener('click', handleClose)
+    }
 
     return {
       openModal,
       closeModal,
+      disableClose
     };
   }
 
@@ -41,31 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
     modalWindow: ".modal_help",
   });
 
-  const { openModal: openSuccessModal, closeModal: closeSuccessModal } = modal({
+  const { openModal: openSuccessModal, closeModal: closeSuccessModal, disableClose: disableSuccessClose } = modal({
     heading: "Success!",
     modalWindow: ".modal_success",
   });
 
-  const { openModal: openPasswordModal, closeModal: closePasswordModal } =
-    modal({
-      heading: "Reset password",
-      modalWindow: ".modal_password",
-    });
-
   // Setting modal open button
   const helpButton = document.querySelector(".content__help");
-  const resetPassword = document.querySelector(".content__issue");
 
   helpButton.addEventListener("click", (e) => {
     e.preventDefault();
     openHelpModal();
   });
-  if (resetPassword) {
-    resetPassword.addEventListener("click", (e) => {
-      e.preventDefault();
-      openPasswordModal();
-    });
-  }
 
   // Show / Hide password
   function setPasswordVisible(input, btn, type, state) {
@@ -77,16 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const passwordBtn = document.querySelector("#show");
   const passwordInput = document.querySelector("#password");
 
-  passwordBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+  if (passwordBtn) {
+    passwordBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    // reset type of input field and label of switch button
-    if (passwordInput.type === "text") {
-      setPasswordVisible(passwordInput, passwordBtn, "password", "show");
-    } else {
-      setPasswordVisible(passwordInput, passwordBtn, "text", "hide");
-    }
-  });
+      // reset type of input field and label of switch button
+      if (passwordInput.type === "text") {
+        setPasswordVisible(passwordInput, passwordBtn, "password", "show");
+      } else {
+        setPasswordVisible(passwordInput, passwordBtn, "text", "hide");
+      }
+    });
+  }
 
   const resetPasswordBtns = document.querySelectorAll(".show-password");
   resetPasswordBtns.forEach((button) => {
@@ -113,17 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form validation
-  const form = document.querySelector("#form");
-
   formValidate(".form_signin", () => {
     openSuccessModal("You have been loged in successfuly!");
   });
+
   formValidate(".form_signup", () => {
     openSuccessModal("You have been signed up successfuly!");
-  });
-  formValidate(".form_reset", () => {
-    closePasswordModal()
-    setTimeout(() => openSuccessModal("Your password has been changed!"), 500)
   });
 
   function formValidate(formSelector, callback) {
@@ -165,24 +183,17 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             setSuccessFor(input);
           }
-        } else if (input.id === "password" || input.id === 'new-password') {
-          if (inputValue === "") {
-            setErrorFor(input, "Password field is empty!");
-          } else if (!isPasswordValid(inputValue)) {
-            setErrorFor(
-              input,
-              "Password should contain 8 letters, one number, one upper and lower case char!"
-            );
+        } else if (input.id === "password" || input.id === "new-password") {
+          passwordValidation(input, inputValue)
+
+        } else if (input.id === "new-password2") {
+          const firstInputValue = input.closest("form").querySelector("#new-password").value;
+
+          // If first password isn't equal to second one
+          if (inputValue !== firstInputValue) {
+            setErrorFor(input, "You have typed different passwords!");
           } else {
             setSuccessFor(input);
-          }
-        } else if ( input.id === 'new-password2' ) {
-          const firstInputValue = input.closest('form').querySelector('#new-password').value
-          if ( inputValue !== firstInputValue ) {
-            setErrorFor(input, 'You have typed different passwords!')
-          } else {
-            console.log( 'success' );
-            setSuccessFor(input)
           }
         }
       });
@@ -222,8 +233,52 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
 
-    function isPasswordValid(password) {
-      return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
+    function passwordValidation(input, inputValue) {
+      const upperCaseRegExp = /(.*?[A-Z])/gm
+      const lowerCaseRegExp = /(.*?[a-z])/gm
+      const digitsRegExp = /(.*?[0-9])/gm
+      const lengthRegExp = /.{8,}/gm
+
+      // Empty password
+      if (inputValue === "") {
+        setErrorFor(input, "Password field is empty!");
+      } 
+
+      // No number
+      else if (!digitsRegExp.test(inputValue)) {
+        setErrorFor(
+          input,
+          "Password should contain at least one number!"
+        );
+      }
+
+      // No lowwer case char
+      else if(!lowerCaseRegExp.test(inputValue)) {
+        setErrorFor(
+          input,
+          "Password should contain at least one lowwer case char!"
+        );
+      }
+
+      // No upper case char
+      else if(!upperCaseRegExp.test(inputValue)) {
+        setErrorFor(
+          input,
+          "Password should contain at least one upper case char!"
+        );
+      }
+
+      // Not long enough
+      else if(!lengthRegExp.test(inputValue)) {
+        setErrorFor(
+          input,
+          "Password should contain at least 8 letters!"
+        );
+      }
+
+      else {
+        setSuccessFor(input);
+      }
     }
   }
 });

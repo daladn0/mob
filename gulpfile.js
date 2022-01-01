@@ -131,7 +131,7 @@ function cssWatch(cb) {
 
 function js(cb) {
     return src(path.src.js, {base: srcPath + 'assets/js/'})
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest(path.build.js))
         .pipe(browserSync.reload({stream: true}));
 
@@ -140,7 +140,7 @@ function js(cb) {
 
 function jsWatch(cb) {
     return src(path.src.js, {base: srcPath + 'assets/js/'})
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest(path.build.js))
         .pipe(browserSync.reload({stream: true}));
     
