@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const confirmForm = document.querySelector(".form_confirm");
   const resetForm = document.querySelector(".form_reset");
-  const heading = document.querySelector(".content__subtitle");
 
-  heading.innerHTML = "Confirm your email";
+  if ( confirmForm ) {
+    const heading = document.querySelector(".content__subtitle");
+    heading.innerHTML = "Confirm your email";
+  }
 
   if (confirmForm && resetForm) {
     resetForm.style.display = "none";
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   formValidate(".form_confirm", () => {
     resetForm.style.display = "";
     confirmForm.style.display = "none";
+    
+    const heading = document.querySelector(".content__subtitle");
     heading.innerHTML = "Reset password";
   });
 

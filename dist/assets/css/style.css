@@ -415,6 +415,15 @@ template {
     padding-right: 100px
 }
 
+.content__additional-info {
+    margin-bottom: 1rem;
+    text-align: left;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #a8a8a8
+}
+
 .content__input {
     position: relative;
     width: 100%;
@@ -985,6 +994,10 @@ template {
 
     .content__login {
         font-size: 12px
+    }
+
+    .content__additional-info {
+        font-size: 11px
     }
 
     .content__footer {

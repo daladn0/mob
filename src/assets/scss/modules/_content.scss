@@ -179,6 +179,15 @@
         }
     }
 
+    &__additional-info {
+        margin-bottom: 1rem;
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+        color: rgb(168, 168, 168);
+    }
+
     &__input {
         position: relative;
         width: 100%;
