@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   formValidate(".form_reset", () => {
-    openSuccessModal("Your password has been changed!");
+    openSuccessModal("Your password has been changed");
     disableSuccessClose()
     setTimeout(() => {
       window.location.href = "/mob/dist";

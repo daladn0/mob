@@ -549,7 +549,9 @@ template {
 
 .content__error {
     margin: 10px 0 0 0;
-    font-family: var(--font);
+    font-family: "Open Sans",sans-serif;
+    font-weight: 400;
+    font-size: 14px;
     color: var(--color-error);
     display: none;
     text-align: left
@@ -792,7 +794,8 @@ template {
 .modal__title {
     padding: 0;
     margin: 0;
-    font-family: "Open Sans",sans-serif
+    font-family: "Open Sans",sans-serif;
+    font-weight: 500
 }
 
 .modal__text {
@@ -944,6 +947,10 @@ template {
 }
 
 @media screen and (max-width: 767px) {
+    .modal__content {
+        max-width: 95%
+    }
+
     .modal__close {
         top: 1rem;
         right: 1rem
@@ -1033,7 +1040,7 @@ template {
     }
 
     .modal_success .modal__content {
-        width: 95%
+        max-width: 80%
     }
 
     .modal__message .modal__p {
@@ -1081,7 +1088,7 @@ template {
     }
 
     .content__error {
-        font-size: 15px
+        font-size: 12px
     }
 }
 
