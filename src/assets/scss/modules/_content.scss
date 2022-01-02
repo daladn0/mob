@@ -271,7 +271,9 @@
 
     &__error {
         margin: 10px 0 0 0;
-        font-family: var(--font);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
         color: var(--color-error);
         display: none;
         text-align: left;

@@ -140,6 +140,10 @@
 
 @media screen and ( max-width: 767px ) {
     .modal {
+        &__content {
+            max-width: 95%;
+        }
+
         &__close {
             top: 1rem;
             right: 1rem;
@@ -276,7 +280,7 @@
         }
 
         &__error {
-            font-size: 15px;
+            font-size: 12px;
         }
     }
 }
