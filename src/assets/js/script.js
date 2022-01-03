@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if ( confirmForm ) {
     const heading = document.querySelector(".content__subtitle");
-    heading.innerHTML = "Confirm your email";
+    heading.innerHTML = "Forgotten your password?";
   }
 
   if (confirmForm && resetForm) {
